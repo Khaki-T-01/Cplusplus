@@ -1,0 +1,28 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+	int t;
+	cin >> t;
+	while (t--) {
+		int n, k, i,j;
+		cin >> n;
+		k = sqrt(n);
+		bool check[k + 1];
+		for (i = 2; i <= k; i++)
+			check[i] = true;
+		for (i = 2; i <= k; i++) {
+			if (check[i] == true) {
+				for (j = 2 * i; j <= k; j += i)
+					check[j] = false;
+			}
+		}
+		for (i = 2; i <= k; i++) {
+			if (check[i] == true) {
+				cout << i*i << " ";
+			}
+		}
+		cout << endl;
+	}
+}
