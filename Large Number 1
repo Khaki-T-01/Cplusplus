@@ -1,0 +1,49 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+
+void xu_li()
+{
+    string x;
+    cin >> x;
+    string y;
+    cin >> y;
+    if(x.size()<y.size()) swap(x,y);
+    
+    while(y.size()<x.size()) y.insert(0,"0");
+	if(x<y) swap(x,y);
+    
+    int a[1005];
+    int h = 0;
+    int nho = 0;
+    int kq;
+    for(int i = x.length() - 1; i >= 0; i--)
+    {
+        kq = (x[i] - '0') - (y[i] - '0') - nho;
+        if(kq < 0)
+        {
+            kq += 10;
+            nho = 1;
+        }
+        else 
+            nho = 0;
+
+        a[h++] = kq;
+    }
+    for(int i = h - 1; i >= 0; i--)
+    {
+        cout << a[i];
+    }
+    cout << endl;
+}
+
+int main()
+{
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        xu_li();
+    }
+    return 0;
+}
